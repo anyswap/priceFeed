@@ -8,7 +8,7 @@ module.exports = {
         const pairsPrices = await this.getPricesFromPairs(chainId);
         // get price from sushiswap
         const apisPrices = await this.getPricesFromApis(chainId);
-        console.log(`pairsPrices:${pairsPrices} apisPrices:${apisPrices}`)
+        // return all prices
         return pairsPrices.concat(apisPrices)
     },
     getPricesFromPairs: async function (chainId) {

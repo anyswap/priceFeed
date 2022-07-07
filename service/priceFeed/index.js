@@ -2,13 +2,12 @@ const schedule = require('node-schedule');
 const GetPrices = require('./getPrices');
 const CalcPrice = require('./calcPrice');
 const UpdatePrice = require('./updatePrice');
-
+const Config = require('../../config/config')
 async function priceFeedJob() {
     // Scan every ten seconds
     schedule.scheduleJob('*/20 * * * * *', async () => {
         try {
-            const chainId = 4;
-            priceFeed(chainId);
+            Config.allChain.map(chainId => priceFeed(chainId))
         } catch (error) {
             console.log('%s error:%s', new Date(), error)
         }

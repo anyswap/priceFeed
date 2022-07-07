@@ -1,5 +1,6 @@
 const Networks = require("./networks")
 module.exports = {
+    allChain: [4],
     priceOracle: "0xFE8D033fEB3005741F9Ae7A0c1F9EeBca44Ef17f",
     privateKey: "",
     usdt: {

@@ -38,7 +38,7 @@ module.exports = {
         const pairContract = Eth.instancePairContracts(pairInfo.pairAddr, pairInfo.network)
         const { _reserve0, _reserve1, _ } = await pairContract.getReserves();
         const token0 = await pairContract.token0()
-        const decimalDiff = Config.chains[chainId].decimal - Config.usdt.decimal
+        const decimalDiff = Config.chains[chainId].decimal - Config.usdtDecimals[chainId]
         return token0 == pairInfo.usdt
             ? _reserve0 * Math.pow(10, decimalDiff) / _reserve1
             : _reserve1 * Math.pow(10, decimalDiff) / _reserve0

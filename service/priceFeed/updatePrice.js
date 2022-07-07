@@ -5,7 +5,7 @@ module.exports = {
         const priceOracleContract = Eth.instancePriceOracleContracts();
         const priceDecimal = await priceOracleContract._decimal();
         const realPrice = Math.floor(newPrice * Math.pow(10, priceDecimal));
-        console.log(`updatePrice chainId:${chainId} realPrice:${realPrice}`)
+        console.log(`chainId:${chainId} updatePrice newPrice:${realPrice}`)
         // await priceOracleContract.setPrice(chainId, realPrice).then(res => {
         //     console.log(`update price success,txHash:${res.hash}`)
         // })

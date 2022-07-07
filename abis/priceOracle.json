@@ -1,0 +1,82 @@
+{
+    "abi": [
+        {
+            "inputs": [],
+            "name": "_decimal",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "chainID",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getCurrencyInfo",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "price",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "decimal",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "lastUpdateTime",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "chainID",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint112",
+                    "name": "price",
+                    "type": "uint112"
+                }
+            ],
+            "name": "setPrice",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256[]",
+                    "name": "chainIDs",
+                    "type": "uint256[]"
+                },
+                {
+                    "internalType": "uint112[]",
+                    "name": "prices",
+                    "type": "uint112[]"
+                }
+            ],
+            "name": "setPricesBatch",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ]
+}

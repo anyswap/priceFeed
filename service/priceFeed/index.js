@@ -17,7 +17,6 @@ async function priceFeedJob() {
 async function priceFeed(chainId) {
     // get prices
     const prices = await GetPrices.getPrices(chainId);
-    console.log(`prices:${prices}`)
     // calc new price
     const newPrice = CalcPrice.calcNewPrice(prices);
     // get price and time from contract

@@ -1,0 +1,1 @@
+pm2 start ./service/priceFeed/index.js -n priceFeed

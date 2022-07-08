@@ -9,24 +9,21 @@ module.exports = {
         // get price from sushiswap
         const apisPrices = await this.getPricesFromApis(chainId);
         // return all prices
-        return pairsPrices.concat(apisPrices)
+        return await Promise.all(pairsPrices.concat(apisPrices))
     },
     getPricesFromPairs: async function (chainId) {
         var prices = [];
         for (i = 0; i < Config.chains[chainId].V2Pairs.length; i++) {
             prices[i] = this.getPriceFromPair(chainId, Config.chains[chainId].V2Pairs[i])
         }
-        return await Promise.all(prices)
+        return prices
     },
     getPricesFromApis: async function (chainId) {
         var prices = [];
         for (i = 0; i < Config.chains[chainId].Apis.length; i++) {
-            prices[i] = axios({
-                method: 'get',
-                url: Config.chains[chainId].Apis[i],
-            }).then(response => response.data[0].current_price);
+            prices[i] = this.getPriceFromApi(Config.chains[chainId].Apis[i])
         }
-        return await Promise.all(prices)
+        return prices
     },
     getPriceAndTimeFromContract: async function (chainId) {
         const priceOracleContract = Eth.instancePriceOracleContracts()
@@ -39,8 +36,20 @@ module.exports = {
         const { _reserve0, _reserve1, _ } = await pairContract.getReserves();
         const token0 = await pairContract.token0()
         const decimalDiff = Config.chains[chainId].decimal - pairInfo.usdtDecimal
-        return token0.toLowerCase() == pairInfo.usdt.toLowerCase()
-            ? _reserve0 * Math.pow(10, decimalDiff) / _reserve1
-            : _reserve1 * Math.pow(10, decimalDiff) / _reserve0
+        return {
+            price: token0.toLowerCase() == pairInfo.usdt.toLowerCase()
+                ? _reserve0 * Math.pow(10, decimalDiff) / _reserve1
+                : _reserve1 * Math.pow(10, decimalDiff) / _reserve0,
+            weight: pairInfo.weight
+        }
+    },
+    getPriceFromApi: async function (apiInfo) {
+        return {
+            price: await axios({
+                method: 'get',
+                url: apiInfo.url,
+            }).then(response => response.data[0].current_price),
+            weight: apiInfo.weight
+        }
     }
 };

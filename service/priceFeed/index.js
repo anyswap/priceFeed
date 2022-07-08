@@ -5,7 +5,7 @@ const UpdatePrice = require('./updatePrice');
 const Config = require('../../config/config')
 async function priceFeedJob() {
     // Scan every ten seconds
-    schedule.scheduleJob('*/10 * * * * *', async () => {
+    schedule.scheduleJob('0 * * * * *', async () => {
         try {
             Config.allChain.map(chainId => priceFeed(chainId))
         } catch (error) {
@@ -24,10 +24,11 @@ async function priceFeed(chainId) {
     // compares price threshold or time boundary
     const updateFlag = CalcPrice.cmpPriceAndTime(price, lastUpdateTime, newPrice);
     // update price or not
-    // if (updateFlag) {
-    //     await UpdatePrice.updatePrice(chainId, newPrice)
-    // }
+    if (updateFlag) {
+        setTimeout(() => {
+            UpdatePrice.updatePrice(chainId, newPrice)
+        }, 3000);
+    }
 }
-
 
 priceFeedJob();

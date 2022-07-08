@@ -1,7 +1,7 @@
 const Networks = require("./networks")
 module.exports = {
-    allChain: [4, 97],
-    priceOracle: "0xFE8D033fEB3005741F9Ae7A0c1F9EeBca44Ef17f",
+    allChain: [4],
+    priceOracle: "0x388f62635e5135471d12Be7080a3E65f6174e1E7",
     privateKey: "",
     chains: {
         "4": {

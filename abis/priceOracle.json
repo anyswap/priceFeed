@@ -50,9 +50,9 @@
                     "type": "uint256"
                 },
                 {
-                    "internalType": "uint112",
+                    "internalType": "uint256",
                     "name": "price",
-                    "type": "uint112"
+                    "type": "uint256"
                 }
             ],
             "name": "setPrice",
@@ -68,9 +68,9 @@
                     "type": "uint256[]"
                 },
                 {
-                    "internalType": "uint112[]",
+                    "internalType": "uint256[]",
                     "name": "prices",
-                    "type": "uint112[]"
+                    "type": "uint256[]"
                 }
             ],
             "name": "setPricesBatch",

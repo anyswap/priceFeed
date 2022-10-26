@@ -48,7 +48,9 @@ module.exports = {
             price: await axios({
                 method: 'get',
                 url: apiInfo.url,
-            }).then(response => response.data[0].current_price),
+                timeout: 10000
+            }).then(response => response.data[0].current_price)
+                .catch(err => console.log(`err:${err}`)),
             weight: apiInfo.weight
         }
     }

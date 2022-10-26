@@ -30,7 +30,7 @@ module.exports = {
     },
     cmpPriceAndTime: function (oldPirce, lastUpdateTime, newPrice) {
         const priceDiff = Math.abs(newPrice - oldPirce)
-        console.log(`oldPirce :${oldPirce} newPrice:${newPrice} priceDiff:${priceDiff} priceRateDiff:${priceDiff / oldPirce} timeDiff:${Math.floor(new Date() / 1000) - lastUpdateTime}`)
+        console.log(`oldPirce :${oldPirce} newPrice:${newPrice} priceDiff:${priceDiff} priceRateDiff:${priceDiff / oldPirce} lastUpdateTime:${lastUpdateTime} newTime:${Math.floor(new Date() / 1000)} timeDiff:${Math.floor(new Date() / 1000) - lastUpdateTime}`)
         return (priceDiff / oldPirce >= 0.005) || (Math.floor(new Date() / 1000) - lastUpdateTime) >= 300 ? true : false;
     },
     calcWeightedValue: function (priceInfo) {

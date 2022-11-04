@@ -5,7 +5,7 @@ const UpdatePrice = require('./updatePrice');
 const Config = require('../../config/config')
 async function priceFeedJob() {
     // Scan every ten seconds
-    schedule.scheduleJob('*/15 * * * * *', async () => {
+    schedule.scheduleJob('0 */2 * * * *', async () => {
         try {
             Config.allChain.map(chainId => priceFeed(chainId))
         } catch (error) {

@@ -1,6 +1,6 @@
 const Networks = require("./networks")
 module.exports = {
-    allChain: [4002, 1000004280406],
+    allChain: [4002, 1000004280406, 97],
     priceOracle: "0xcfD1ee7EA7300F106506e7454fD73E87664B8992",
     privateKey: "",
     chains: {
@@ -29,6 +29,18 @@ module.exports = {
                 }
             ],
             decimal: 8,
+        },
+        "97": {
+            V2Pairs: [
+                // { pairAddr: "0x16b9a82891338f9bA80E2D6970FddA79D1eb0daE", network: Networks.mainnet["97"], usdt: "0x55d398326f99059fF775485246999027B3197955", usdtDecimal: 18, weight: 100 },
+            ],
+            Apis: [
+                {
+                    url: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=binancecoin",
+                    weight: 100
+                }
+            ],
+            decimal: 18,
         }
     }
 }
